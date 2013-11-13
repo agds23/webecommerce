@@ -34,7 +34,7 @@
             <version>${hibernate-core}</version>
         </dependency>   
     </dependencies>           
-TESTANDO GIT
+
     <build>
         <plugins>
             <plugin>
