@@ -6,6 +6,7 @@
 
 package br.com.agds.webecommerce.util;
 
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
@@ -30,7 +31,7 @@ public class HibernateUtil {
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
             
             System.out.println("Session Factory Criada Corretamente!");
-        } catch (Exception ex) {
+        } catch (HibernateException ex) {
             System.out.println("Ocorreu um erro ao iniciar a Session Factory" + ex);
             
             throw new ExceptionInInitializerError(ex);
