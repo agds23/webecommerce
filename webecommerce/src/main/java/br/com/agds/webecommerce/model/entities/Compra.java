@@ -31,7 +31,6 @@ public class Compra implements Serializable {
     private Integer idCompra;
     
     @Column(name = "Procudo_Da_Compra", nullable = false)
-    @ManyToOne
     private Produto produtoDaCompra;
     
     @Column(name = "Data_Da_Compra", nullable = false)

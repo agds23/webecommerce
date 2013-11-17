@@ -7,11 +7,15 @@ package br.com.agds.webecommerce.model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import org.hibernate.annotations.ForeignKey;
 
 /**
  *
@@ -36,6 +40,10 @@ class Categoria implements Serializable {
 
     @Column(name = "Descricao_Categoria", nullable = false)
     private String descricaCategoria;
+    
+    @OneToMany(mappedBy = "cateroria", fetch = FetchType.LAZY)
+    @ForeignKey(name="FK_Categoria_Produto")
+    private List<Produto> produtos;
     
     public Categoria() {
     }
@@ -72,6 +80,15 @@ class Categoria implements Serializable {
         this.descricaCategoria = descricaCategoria;
     }
 
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produto> produtos) {
+        this.produtos = produtos;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -94,5 +111,4 @@ class Categoria implements Serializable {
         return true;
     }
 
-    
 }
