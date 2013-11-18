@@ -7,11 +7,14 @@ package br.com.agds.webecommerce.model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import org.hibernate.annotations.ForeignKey;
@@ -21,41 +24,32 @@ import org.hibernate.annotations.ForeignKey;
  * @author André
  */
 @Entity
-@Table(name = "produto")
-public class Produto implements Serializable {
+@Table(name = "compra")
+public class Pedido implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "ID_Produto", nullable = false)
-    private Integer idProduto;
+    @Column(name = "ID_Compra", nullable = false)
+    private Integer idCompra;
 
-    @ManyToOne(optional = false)
-    @ForeignKey(name = "FK_Categoria_Produto")
-    @JoinColumn(name = "", referencedColumnName = "")
-    private Categoria categoriaProduto;
-
-    @Column(name = "Nome_Produto", nullable = false)
-    private String nomeProduto;
-
-    @Column(name = "Preco_Produto", nullable = false)
-    private double precoProduto;
-
-    @Column(name = "Quantidade_Produto", nullable = false)
-    private Integer quantidadeProduto;
-
-    @Temporal(javax.persistence.TemporalType.DATE)
-    @Column(name = "Data_De_Cadastro_Produto", nullable = false)
-    private Date dataDeCadastroProduto;
-
-    @Column(name = "Descricao_Produto", nullable = false)
-    private String descricaoProduto;
-
-    @ManyToOne(optional = false)
+    @OneToMany(mappedBy = "compra", fetch = FetchType.LAZY)
     @ForeignKey(name = "FK_Compra_Pedido")
     @JoinColumn(name = "", referencedColumnName = "")
-    private Pedido pedido;
-    
-    public Produto() {
+    private List<Produto> produtos;
+
+    @Column(name = "Data_Da_Compra", nullable = false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataDaCompra;
+
+    @Column(name = "Observacao_Da_Compra", nullable = false)
+    private String observacaoDaCompra;
+
+    @ManyToOne(optional = false)
+    @ForeignKey(name = "FK_Cliente_Pedido")
+    @JoinColumn(name = "", referencedColumnName = "")
+    private Cliente cliente;
+
+    public Pedido() {
     }
 }
