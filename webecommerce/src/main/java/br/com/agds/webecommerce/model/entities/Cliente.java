@@ -48,5 +48,5 @@ public class Cliente implements Serializable {
     private List<Pedido> pedidos;
 
     public Cliente() {
-    }
+    } 
 }
