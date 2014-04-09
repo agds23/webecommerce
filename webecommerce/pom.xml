@@ -62,6 +62,13 @@
             <artifactId>jstl</artifactId>
             <version>${jstl}</version>
         </dependency>
+        <!-- ########### PRIMEFACES - IN?CIO ############ -->
+        <dependency>  
+            <groupId>org.primefaces</groupId>  
+            <artifactId>primefaces</artifactId>  
+            <version>4.0</version>  
+        </dependency> 
+        <!-- ########### PRIMEFACES - FIM ############ -->
     </dependencies>           
 
     <build>
